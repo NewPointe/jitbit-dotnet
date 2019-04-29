@@ -1,3 +1,10 @@
+//-----------------------------------------------------------------------
+// <copyright>
+//     This Source Code Form is subject to the terms of the Mozilla Public
+//     License, v. 2.0. If a copy of the MPL was not distributed with this
+//     file, You can obtain one at http://mozilla.org/MPL/2.0/.
+// </copyright>
+//-----------------------------------------------------------------------
 
 using System;
 
@@ -27,9 +34,12 @@ namespace NewPointe.JitBit.Structures
         public int UserID { get; set; }
         public int? CompanyID { get; set; }
         public string CompanyName { get; set; }
-        public int? SectionID { get; set; }
         public int? AssignedToUserID { get; set; }
+        public DateTime? ResolvedDate { get; set; }
+        public int? SectionID { get; set; }
         public string Category { get; set; }
+        public string Origin { get; set; }
+        public dynamic ViewingTechs { get; set; }
     }
 
 }
