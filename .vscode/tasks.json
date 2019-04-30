@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/jitbit-dotnet.csproj"
+                "${workspaceFolder}/NewPointe.JitBit.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/jitbit-dotnet.csproj"
+                "${workspaceFolder}/NewPointe.JitBit.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/jitbit-dotnet.csproj"
+                "${workspaceFolder}/NewPointe.JitBit.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

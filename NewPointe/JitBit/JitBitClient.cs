@@ -7,14 +7,15 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
+using NewPointe.JitBit.Structures.Generated;
 using NewPointe.JitBit.Structures;
-using System.Collections.Generic;
 
 namespace NewPointe.JitBit
 {
@@ -47,17 +48,36 @@ namespace NewPointe.JitBit
             var basicAuthToken = Convert.ToBase64String(Encoding.ASCII.GetBytes(username + ":" + password));
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", basicAuthToken);
 
-            var result = await client.GetAsync( "api/Authorization" );
+            var result = await client.GetAsync("api/Authorization");
             result.EnsureSuccessStatusCode();
             return await result.Content.ReadAsAsync<User>();
         }
+
+
+
+        #region Tickets
+
+        public async Task<TicketPartial[]> GetTickets(TicketFilter filter)
+        {
+
+            var result = await client.GetAsync("api/Tickets?" + filter.BuildQueryString());
+            result.EnsureSuccessStatusCode();
+            return await result.Content.ReadAsAsync<TicketPartial[]>();
+
+        }
+
+        #endregion
+
+
+        #region Assets
 
         /// <summary>
         /// Gets all Assets from Jitbit.
         /// </summary>
         /// <param name="pageLimit">The maximum number of pages to retrieve. Defaults to 10.</param>
         /// <returns>An array of Assets.</returns>
-        public async Task<Asset[]> GetAssets(int pageLimit = 10) {
+        public async Task<Asset[]> GetAssets(int pageLimit = 10)
+        {
 
             // A List for all of our assets
             List<Asset> assets = new List<Asset>();
@@ -65,13 +85,14 @@ namespace NewPointe.JitBit
             // Temp variables for the current page
             int currentPageNumber = 1;
             Asset[] currentPageResults = new Asset[0];
-            
+
             // Loop until we hit the page limit or don't get a full page (50 items) back
-            do {
+            do
+            {
 
                 // Get the page
                 currentPageResults = await GetAssetPage(currentPageNumber);
-                
+
                 // Add to our list
                 assets.AddRange(currentPageResults);
 
@@ -79,7 +100,7 @@ namespace NewPointe.JitBit
                 currentPageNumber = currentPageNumber + 1;
 
             }
-            while(currentPageNumber < pageLimit && currentPageResults.Length == 50);
+            while (currentPageNumber < pageLimit && currentPageResults.Length == 50);
 
             return assets.ToArray();
 
@@ -90,13 +111,34 @@ namespace NewPointe.JitBit
         /// </summary>
         /// <param name="page">The page number.</param>
         /// <returns>An array of Assets</returns>
-        public async Task<Asset[]> GetAssetPage(int page) {
-            
-            var result = await client.GetAsync( "api/Assets?page=" + page.ToString() );
+        public async Task<Asset[]> GetAssetPage(int page)
+        {
+
+            var result = await client.GetAsync("api/Assets?page=" + page.ToString());
             result.EnsureSuccessStatusCode();
             return await result.Content.ReadAsAsync<Asset[]>();
 
         }
+
+        #endregion
+
+
+        #region Stats
+
+        /// <summary>
+        /// Gets ticket statistics.
+        /// </summary>
+        /// <returns>The stats</returns>
+        public async Task<Stats> GetStats()
+        {
+
+            var result = await client.GetAsync("api/Stats");
+            result.EnsureSuccessStatusCode();
+            return await result.Content.ReadAsAsync<Stats>();
+
+        }
+
+        #endregion
 
     }
 }

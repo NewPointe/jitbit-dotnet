@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>jitbit_dotnet</RootNamespace>
+    <RootNamespace>NewPointe.JitBit</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

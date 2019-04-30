@@ -6,16 +6,20 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace NewPointe.JitBit.Structures
 {
-
-    public enum CustomFieldType
+    public enum TicketFilterMode
     {
-        Text = 1,
-        Date = 2,
-        SelectionCombo = 3,
-        Checkbox = 4,
-        MultilineText = 5
+        ALL,
+        UNANSWERED,
+        UNCLOSED,
+        HANDLEDBYME
     }
-    
+
 }

@@ -8,7 +8,7 @@
 
 using System;
 
-namespace NewPointe.JitBit.Structures
+namespace NewPointe.JitBit.Structures.Old
 {
 
     public class User
