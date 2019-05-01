@@ -57,10 +57,10 @@ namespace NewPointe.JitBit
 
         #region Tickets
 
-        public async Task<TicketPartial[]> GetTickets(TicketFilter filter)
+        public async Task<TicketPartial[]> GetTickets(GetTicketsParameters filter)
         {
 
-            var result = await client.GetAsync("api/Tickets?" + filter.BuildQueryString());
+            var result = await client.GetAsync("api/Tickets?" + filter.GetQueryString());
             result.EnsureSuccessStatusCode();
             return await result.Content.ReadAsAsync<TicketPartial[]>();
 
@@ -76,7 +76,7 @@ namespace NewPointe.JitBit
         /// </summary>
         /// <param name="pageLimit">The maximum number of pages to retrieve. Defaults to 10.</param>
         /// <returns>An array of Assets.</returns>
-        public async Task<Asset[]> GetAssets(int pageLimit = 10)
+        public async Task<Asset[]> GetAllAssets(int pageLimit = 10)
         {
 
             // A List for all of our assets
@@ -91,7 +91,7 @@ namespace NewPointe.JitBit
             {
 
                 // Get the page
-                currentPageResults = await GetAssetPage(currentPageNumber);
+                currentPageResults = await GetAssets(new GetAssetsParameters { Page = currentPageNumber });
 
                 // Add to our list
                 assets.AddRange(currentPageResults);
@@ -111,13 +111,29 @@ namespace NewPointe.JitBit
         /// </summary>
         /// <param name="page">The page number.</param>
         /// <returns>An array of Assets</returns>
-        public async Task<Asset[]> GetAssetPage(int page)
+        public async Task<Asset[]> GetAssets(GetAssetsParameters parameters)
         {
-
-            var result = await client.GetAsync("api/Assets?page=" + page.ToString());
+            var result = await client.GetAsync("api/Assets?" + parameters.GetQueryString());
             result.EnsureSuccessStatusCode();
             return await result.Content.ReadAsAsync<Asset[]>();
+        }
 
+        public async Task<int> CreateAsset(CreateAssetParameters newAsset) {
+            var result = await client.PostAsJsonAsync("/api/Asset", newAsset);
+            result.EnsureSuccessStatusCode();
+            return (await result.Content.ReadAsAsync<CreateAssetResponse>()).Id;
+        }
+
+        public async Task<Asset> UpdateAsset(UpdateAssetParameters updatedAsset) {
+            var result = await client.PostAsJsonAsync("/api/UpdateAsset", updatedAsset);
+            result.EnsureSuccessStatusCode();
+            return await result.Content.ReadAsAsync<Asset>();
+        }
+
+        public async Task<HttpResponseMessage> SetCustomAssetField(SetCustomAssetFieldParameters field) {
+            var result = await client.PostAsJsonAsync("/api/SetCustomFieldForAsset", field);
+            result.EnsureSuccessStatusCode();
+            return result;
         }
 
         #endregion

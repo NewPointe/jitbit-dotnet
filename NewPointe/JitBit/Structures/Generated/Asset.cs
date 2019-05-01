@@ -45,16 +45,16 @@ namespace NewPointe.JitBit.Structures.Generated
         public string ModelName { get; set; }
 
         [JsonProperty("TypeID")]
-        public int TypeId { get; set; }
+        public int? TypeId { get; set; }
 
         [JsonProperty("Type")]
         public string Type { get; set; }
 
         [JsonProperty("ManufacturerID")]
-        public int ManufacturerId { get; set; }
+        public int? ManufacturerId { get; set; }
 
         [JsonProperty("SupplierID")]
-        public int SupplierId { get; set; }
+        public int? SupplierId { get; set; }
 
         [JsonProperty("SerialNumber")]
         public string SerialNumber { get; set; }
@@ -78,7 +78,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public int? CompanyId { get; set; }
 
         [JsonProperty("Disabled")]
-        public bool Disabled { get; set; }
+        public bool? Disabled { get; set; }
     }
 
 }

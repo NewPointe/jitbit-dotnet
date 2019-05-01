@@ -66,7 +66,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public string UserAgent { get; set; }
 
         [JsonProperty("AvatarURL")]
-        public dynamic AvatarUrl { get; set; }
+        public Uri AvatarUrl { get; set; }
 
         [JsonProperty("Signature")]
         public string Signature { get; set; }
@@ -81,7 +81,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public int? DepartmentId { get; set; }
 
         [JsonProperty("CompanyNotes")]
-        public dynamic CompanyNotes { get; set; }
+        public string CompanyNotes { get; set; }
 
         [JsonProperty("SendEmail")]
         public bool SendEmail { get; set; }

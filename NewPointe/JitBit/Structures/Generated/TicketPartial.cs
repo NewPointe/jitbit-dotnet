@@ -80,7 +80,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public string CompanyName { get; set; }
 
         [JsonProperty("AssignedToUserID")]
-        public int AssignedToUserId { get; set; }
+        public int? AssignedToUserId { get; set; }
 
         [JsonProperty("ResolvedDate")]
         public DateTimeOffset? ResolvedDate { get; set; }

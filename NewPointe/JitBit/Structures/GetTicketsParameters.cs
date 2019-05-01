@@ -15,7 +15,7 @@ using Newtonsoft.Json.Converters;
 
 namespace NewPointe.JitBit.Structures
 {
-    public class TicketFilter
+    public class GetTicketsParameters : IHaveQueryParameters
     {
         public TicketFilterMode? Mode { get; set; }
         public int? CategoryId { get; set; }
@@ -32,7 +32,7 @@ namespace NewPointe.JitBit.Structures
         public int? Count { get; set; }
         public int? Offset { get; set; }
 
-        public string BuildQueryString()
+        public string GetQueryString()
         {
 
             var qs = new QueryString();

@@ -20,7 +20,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public string Value { get; set; }
 
         [JsonProperty("OptionID")]
-        public dynamic OptionId { get; set; }
+        public int? OptionId { get; set; }
 
         [JsonProperty("FieldName")]
         public string FieldName { get; set; }
@@ -29,7 +29,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public int FieldId { get; set; }
 
         [JsonProperty("Type")]
-        public int Type { get; set; }
+        public FieldType Type { get; set; }
 
         [JsonProperty("UsageType")]
         public int UsageType { get; set; }

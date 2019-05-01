@@ -29,7 +29,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public DateTimeOffset CommentDate { get; set; }
 
         [JsonProperty("FileHash")]
-        public dynamic FileHash { get; set; }
+        public string FileHash { get; set; }
 
         [JsonProperty("FileSize")]
         public int FileSize { get; set; }
@@ -47,16 +47,16 @@ namespace NewPointe.JitBit.Structures.Generated
         public int InstanceId { get; set; }
 
         [JsonProperty("AssetID")]
-        public dynamic AssetId { get; set; }
+        public int? AssetId { get; set; }
 
         [JsonProperty("UserID")]
         public int UserId { get; set; }
 
         [JsonProperty("GoogleDriveUrl")]
-        public dynamic GoogleDriveUrl { get; set; }
+        public Uri GoogleDriveUrl { get; set; }
 
         [JsonProperty("DropboxUrl")]
-        public dynamic DropboxUrl { get; set; }
+        public Uri DropboxUrl { get; set; }
 
         [JsonProperty("ForTechsOnly")]
         public bool ForTechsOnly { get; set; }
@@ -65,7 +65,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public bool CommentIsSystem { get; set; }
 
         [JsonProperty("IsDuplicate")]
-        public dynamic IsDuplicate { get; set; }
+        public bool? IsDuplicate { get; set; }
 
         [JsonProperty("Url")]
         public Uri Url { get; set; }

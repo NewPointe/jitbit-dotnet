@@ -30,7 +30,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public Uri Url { get; set; }
 
         [JsonProperty("ViewingTechNames")]
-        public dynamic[] ViewingTechNames { get; set; }
+        public string[] ViewingTechNames { get; set; }
 
         [JsonProperty("Origin")]
         public string Origin { get; set; }
@@ -39,7 +39,7 @@ namespace NewPointe.JitBit.Structures.Generated
         public dynamic[] Tags { get; set; }
 
         [JsonProperty("OnBehalfUserName")]
-        public dynamic OnBehalfUserName { get; set; }
+        public string OnBehalfUserName { get; set; }
 
         [JsonProperty("Integrations")]
         public Dictionary<string, dynamic> Integrations { get; set; }
@@ -96,10 +96,10 @@ namespace NewPointe.JitBit.Structures.Generated
         public int UserId { get; set; }
 
         [JsonProperty("AssignedToUserID")]
-        public int AssignedToUserId { get; set; }
+        public int? AssignedToUserId { get; set; }
 
         [JsonProperty("CategoryID")]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [JsonProperty("ResolvedDate")]
         public DateTimeOffset? ResolvedDate { get; set; }

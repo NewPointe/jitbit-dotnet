@@ -6,16 +6,14 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace NewPointe.JitBit.Structures.Old
+using Newtonsoft.Json;
+
+namespace NewPointe.JitBit
 {
 
-    public enum CustomFieldType
+    public interface IHaveQueryParameters
     {
-        Text = 1,
-        Date = 2,
-        SelectionCombo = 3,
-        Checkbox = 4,
-        MultilineText = 5
+        string GetQueryString();
     }
-    
+
 }
