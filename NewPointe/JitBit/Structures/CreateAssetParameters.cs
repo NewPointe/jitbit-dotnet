@@ -13,10 +13,7 @@ namespace NewPointe.JitBit.Structures
 
     public class CreateAssetParameters
     {
-
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
+        
         [JsonProperty("modelName")]
         public string ModelName { get; set; }
 
