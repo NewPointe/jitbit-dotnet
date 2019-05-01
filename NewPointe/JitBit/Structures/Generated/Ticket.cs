@@ -12,7 +12,7 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace NewPointe.JitBit.Structures.Generated
+namespace NewPointe.JitBit.Structures
 {
 
     public partial class Ticket

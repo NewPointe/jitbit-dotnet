@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
-using NewPointe.JitBit.Structures.Generated;
 using NewPointe.JitBit.Structures;
 
 namespace NewPointe.JitBit
