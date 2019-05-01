@@ -118,19 +118,23 @@ namespace NewPointe.JitBit
         }
 
         public async Task<int> CreateAsset(CreateAssetParameters newAsset) {
-            var result = await client.PostAsJsonAsync("/api/Asset", newAsset);
+            var result = await client.PostAsJsonAsync("api/Asset", newAsset);
             result.EnsureSuccessStatusCode();
             return (await result.Content.ReadAsAsync<CreateAssetResponse>()).Id;
         }
 
         public async Task<Asset> UpdateAsset(UpdateAssetParameters updatedAsset) {
-            var result = await client.PostAsJsonAsync("/api/UpdateAsset", updatedAsset);
+            var result = await client.PostAsJsonAsync("api/UpdateAsset", updatedAsset);
+
+            // await NewPointe.Util.HttpUtil.DebugResponse(result);
+            // throw new Exception("Boop");
+
             result.EnsureSuccessStatusCode();
             return await result.Content.ReadAsAsync<Asset>();
         }
 
         public async Task<HttpResponseMessage> SetCustomAssetField(SetCustomAssetFieldParameters field) {
-            var result = await client.PostAsJsonAsync("/api/SetCustomFieldForAsset", field);
+            var result = await client.PostAsJsonAsync("api/SetCustomFieldForAsset", field);
             result.EnsureSuccessStatusCode();
             return result;
         }
